@@ -1,0 +1,986 @@
+Index: 1_two_sum/rust/solution_1/src/main.rs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/src/main.rs b/1_two_sum/rust/solution_1/src/main.rs
+new file mode 100644
+--- /dev/null	(date 1673346450878)
++++ b/1_two_sum/rust/solution_1/src/main.rs	(date 1673346450878)
+@@ -0,0 +1,6 @@
++use solution_1::Solution;
++
++fn main() {
++    let nums = [2,7,11,15].to_vec();
++    println!("{:?}", Solution::two_sum(nums, 9 as i32));
++}
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-6de23b673073330c/invoked.timestamp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-6de23b673073330c/invoked.timestamp b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-6de23b673073330c/invoked.timestamp
+new file mode 100644
+--- /dev/null	(date 1673346451012)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-6de23b673073330c/invoked.timestamp	(date 1673346451012)
+@@ -0,0 +1,1 @@
++This file has an mtime of when this was started.
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/src/tests.rs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/src/tests.rs b/1_two_sum/rust/solution_1/src/tests.rs
+new file mode 100644
+--- /dev/null	(date 1673346430253)
++++ b/1_two_sum/rust/solution_1/src/tests.rs	(date 1673346430253)
+@@ -0,0 +1,55 @@
++mod dependent{
++    pub fn sorted(a:Vec<i32>) -> Vec<i32>{
++        let mut out = Vec::new();
++        let mut a = a;
++        while a.len() != 0{
++            let mut key = 0;
++            for i in 0..a.len(){
++                if a[key] > a[i]{
++                    key = i
++                }
++            };
++            out.push(a[key]);
++            a.remove(key);
++        };
++        return out
++    }
++}
++
++#[cfg(test)]
++mod test_set {
++    use crate::Solution;
++    use super::dependent::sorted;
++
++    #[test]
++    fn sort_test() {
++        assert_eq!(vec![1,2,3], sorted(vec![3,2,1]))
++    }
++
++    #[test]
++    fn test_1(){
++        let nums = vec![2,7,11,15];
++        let target = 9;
++        let aim:Vec<i32> = vec![1,0];
++        let result = Solution::two_sum(nums,target);
++        assert_eq!(sorted(aim), sorted(result));
++    }
++
++    #[test]
++    fn test_2(){
++        let nums = vec![3,2,4];
++        let target = 6;
++        let aim:Vec<i32> = vec![1,2];
++        let result = Solution::two_sum(nums,target);
++        assert_eq!(sorted(aim), sorted(result));
++    }
++
++    #[test]
++    fn test_3(){
++        let nums = vec![3,3];
++        let target = 6;
++        let aim = vec![0, 1];
++        let result = Solution::two_sum(nums,target);
++        assert_eq!(sorted(aim), sorted(result));
++    }
++}
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-5634fecf5f0239e5/test-lib-solution_1.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-5634fecf5f0239e5/test-lib-solution_1.json b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-5634fecf5f0239e5/test-lib-solution_1.json
+new file mode 100644
+--- /dev/null	(date 1673346430537)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-5634fecf5f0239e5/test-lib-solution_1.json	(date 1673346430537)
+@@ -0,0 +1,1 @@
++{"rustc":17274253158082290215,"features":"[]","target":8685265593379726073,"profile":1021633075455700787,"path":17523903030608720598,"deps":[],"local":[{"CheckDepInfo":{"dep_info":"debug\\.fingerprint\\solution_1-5634fecf5f0239e5\\dep-test-lib-solution_1"}}],"rustflags":[],"metadata":7797948686568424061,"config":2202906307356721367,"compile_kind":0}
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-5634fecf5f0239e5/test-lib-solution_1
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-5634fecf5f0239e5/test-lib-solution_1 b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-5634fecf5f0239e5/test-lib-solution_1
+new file mode 100644
+--- /dev/null	(date 1673346430537)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-5634fecf5f0239e5/test-lib-solution_1	(date 1673346430537)
+@@ -0,0 +1,1 @@
++934c3d86600d11c1
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/src/lib.rs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/src/lib.rs b/1_two_sum/rust/solution_1/src/lib.rs
+new file mode 100644
+--- /dev/null	(date 1673346407917)
++++ b/1_two_sum/rust/solution_1/src/lib.rs	(date 1673346407917)
+@@ -0,0 +1,16 @@
++mod tests;
++
++pub struct Solution;
++
++impl Solution {
++    pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
++        for i in 0..nums.len(){
++            for j in 0..i{
++                if nums[i] + nums[j] == target{
++                    return vec![i as i32,j as i32]
++                }
++            }
++        };
++        return vec![0 as i32,0 as i32]
++    }
++}
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-5634fecf5f0239e5/invoked.timestamp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-5634fecf5f0239e5/invoked.timestamp b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-5634fecf5f0239e5/invoked.timestamp
+new file mode 100644
+--- /dev/null	(date 1673346430383)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-5634fecf5f0239e5/invoked.timestamp	(date 1673346430383)
+@@ -0,0 +1,1 @@
++This file has an mtime of when this was started.
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-4877a124977150fd/invoked.timestamp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-4877a124977150fd/invoked.timestamp b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-4877a124977150fd/invoked.timestamp
+new file mode 100644
+--- /dev/null	(date 1673346451012)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-4877a124977150fd/invoked.timestamp	(date 1673346451012)
+@@ -0,0 +1,1 @@
++This file has an mtime of when this was started.
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-4877a124977150fd/bin-solution_1.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-4877a124977150fd/bin-solution_1.json b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-4877a124977150fd/bin-solution_1.json
+new file mode 100644
+--- /dev/null	(date 1673346451151)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-4877a124977150fd/bin-solution_1.json	(date 1673346451151)
+@@ -0,0 +1,1 @@
++{"rustc":17274253158082290215,"features":"[]","target":3855426319648328466,"profile":7309141686862299243,"path":1684066648322511884,"deps":[[1751220855477751170,"solution_1",false,3902789184164682643]],"local":[{"CheckDepInfo":{"dep_info":"debug\\.fingerprint\\solution_1-4877a124977150fd\\dep-bin-solution_1"}}],"rustflags":[],"metadata":7797948686568424061,"config":2202906307356721367,"compile_kind":0}
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-4877a124977150fd/bin-solution_1
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-4877a124977150fd/bin-solution_1 b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-4877a124977150fd/bin-solution_1
+new file mode 100644
+--- /dev/null	(date 1673346451150)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-4877a124977150fd/bin-solution_1	(date 1673346451150)
+@@ -0,0 +1,1 @@
++dfdc1e59001fc2bd
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-0ed42cdfbadc0794/invoked.timestamp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-0ed42cdfbadc0794/invoked.timestamp b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-0ed42cdfbadc0794/invoked.timestamp
+new file mode 100644
+--- /dev/null	(date 1673346363243)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-0ed42cdfbadc0794/invoked.timestamp	(date 1673346363243)
+@@ -0,0 +1,1 @@
++This file has an mtime of when this was started.
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/Cargo.lock
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/Cargo.lock b/1_two_sum/rust/solution_1/Cargo.lock
+new file mode 100644
+--- /dev/null	(date 1673346132808)
++++ b/1_two_sum/rust/solution_1/Cargo.lock	(date 1673346132808)
+@@ -0,0 +1,7 @@
++# This file is automatically @generated by Cargo.
++# It is not intended for manual editing.
++version = 3
++
++[[package]]
++name = "solution_1"
++version = "0.1.0"
+Index: 1_two_sum/rust/solution_1/Cargo.toml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/Cargo.toml b/1_two_sum/rust/solution_1/Cargo.toml
+new file mode 100644
+--- /dev/null	(date 1673346130926)
++++ b/1_two_sum/rust/solution_1/Cargo.toml	(date 1673346130926)
+@@ -0,0 +1,8 @@
++[package]
++name = "solution_1"
++version = "0.1.0"
++edition = "2021"
++
++# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
++
++[dependencies]
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-0ed42cdfbadc0794/bin-solution_1.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-0ed42cdfbadc0794/bin-solution_1.json b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-0ed42cdfbadc0794/bin-solution_1.json
+new file mode 100644
+--- /dev/null	(date 1673346363371)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-0ed42cdfbadc0794/bin-solution_1.json	(date 1673346363371)
+@@ -0,0 +1,1 @@
++{"rustc":17274253158082290215,"features":"[]","target":3855426319648328466,"profile":7309141686862299243,"path":1684066648322511884,"deps":[],"local":[{"CheckDepInfo":{"dep_info":"debug\\.fingerprint\\solution_1-0ed42cdfbadc0794\\dep-bin-solution_1"}}],"rustflags":[],"metadata":7797948686568424061,"config":2202906307356721367,"compile_kind":0}
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-0ed42cdfbadc0794/bin-solution_1
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-0ed42cdfbadc0794/bin-solution_1 b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-0ed42cdfbadc0794/bin-solution_1
+new file mode 100644
+--- /dev/null	(date 1673346363371)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-0ed42cdfbadc0794/bin-solution_1	(date 1673346363371)
+@@ -0,0 +1,1 @@
++93f4ad043a1bcb35
+\ No newline at end of file
+Index: 1_two_sum/python3/lib.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/python3/lib.py b/1_two_sum/python3/lib.py
+new file mode 100644
+--- /dev/null	(date 1673262536697)
++++ b/1_two_sum/python3/lib.py	(date 1673262536697)
+@@ -0,0 +1,9 @@
++class Solution:
++    def twoSum(self, nums: list, target: int) -> list:
++        buffer = {}
++        for i in range(len(nums)):
++            difference = target - nums[i]
++            if difference in buffer:
++                return [i, buffer[difference]]
++            else:
++                buffer[nums[i]] = i
+\ No newline at end of file
+Index: 1_two_sum/python3/main.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/python3/main.py b/1_two_sum/python3/main.py
+new file mode 100644
+--- /dev/null	(date 1673262550746)
++++ b/1_two_sum/python3/main.py	(date 1673262550746)
+@@ -0,0 +1,4 @@
++from lib import Solution
++
++solution = Solution()
++print(solution.twoSum([2,7,11,15], 9))
+\ No newline at end of file
+Index: 1_two_sum/question.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/question.txt b/1_two_sum/question.txt
+new file mode 100644
+--- /dev/null	(date 1673323261002)
++++ b/1_two_sum/question.txt	(date 1673323261002)
+@@ -0,0 +1,62 @@
++给定一个整数数组 nums和一个整数目标值 target，请你在该数组中找出 和为目标值 target的那两个整数，并返回它们的数组下标。
++
++你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。
++你可以按任意顺序返回答案。
++
++示例 1：
++输入：nums = [2,7,11,15], target = 9
++输出：[0,1]
++解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。
++
++示例 2：
++输入：nums = [3,2,4], target = 6
++输出：[1,2]
++
++示例 3：
++输入：nums = [3,3], target = 6
++输出：[0,1]
++
++提示：
++-> 2 <= nums.length <= 104
++-> -109 <= nums[i] <= 109
++-> -109 <= target <= 109
++-> 只会存在一个有效答案
++
++进阶：你可以想出一个时间复杂度小于 O(n2) 的算法吗？
++
++========================================================================================================================
++
++Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
++
++You may assume that each input would have exactly one solution, and you may not use the same element twice.
++
++You can return the answer in any order.
++
++
++Example 1:
++Input: nums = [2,7,11,15], target = 9
++Output: [0,1]
++Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
++
++Example 2:
++Input: nums = [3,2,4], target = 6
++Output: [1,2]
++
++Example 3:
++Input: nums = [3,3], target = 6
++Output: [0,1]
++
++
++Constraints:
++-> 2 <= nums.length <= 104
++-> -109 <= nums[i] <= 109
++-> -109 <= target <= 109
++-> Only one valid answer exists.
++
++Follow-up: Can you come up with an algorithm that is less than O(n^2) time complexity?
++
++========================================================================================================================
++
++来源：力扣（LeetCode）
++链接：https://leetcode.cn/problems/two-sum
++著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+\ No newline at end of file
+Index: 1_two_sum/explaination.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/explaination.md b/1_two_sum/explaination.md
+new file mode 100644
+--- /dev/null	(date 1673359879710)
++++ b/1_two_sum/explaination.md	(date 1673359879710)
+@@ -0,0 +1,88 @@
++### 解法一 暴力遍历
++通过`for`循环遍历列表，并且在每次遍历的时候再遍历**当前下标前**的所有元素，并判断该元素加上当前下标对应的值是否与`target`匹配，匹配输出，反之进入下一次循环。
++
++为什么是**当前下标前**？
++- 如果没有使用这个限制，则会**多做一倍的判断**，相当于须消耗多一倍的时间（该代码并没有存储任何东西，只有两个索引的常量信息被记录，所以不会产生消耗更多内存的情况）。
++
++为什么会**多做一倍的判断**？
++- 假设现在列表里面至少包含了两个元素，`a`和``b``，并且假设`a`在`b`之前。那么现在可以模拟一下遍历的过程，假如现在在`a`处，若没有限制，代码此时会遍历整个列表一次，同时的`b`也在这个遍历当中，由此可知`a+b`的这个情况在这里已经被计算了一次。此时代码继续运行，直到遍历到b的位置。此时的代码依然会遍历整个列表，且`a`也一定在这个遍历当中，所以`b+a`的情况在这里也计算了一次。由于题目对于输出的两个元素的位置没有限制，这也就说明了从输出来看`a+b`和`b+a`的意义是完全一样的。但是一样的东西被重复计算了两次，且同时这个问题是完全可以避免的（限制里面那个遍历的范围），这也就表示这多出来的一次判断是完全无意义的。
++#### 代码
++
++```python3 []
++class Solution:
++    def twoSum(self, nums:list, target: int) -> list:
++        for i in range(len(nums)):
++            for j in range(i):
++                if nums[i] + nums[j] == target:
++                    return [i,j]
++        # return [0,0]
++        # 因为知道必存在解，所以一定不会执行到这里，所以可以省略。
++```
++```rust []
++impl Solution {
++    pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
++        for i in 0..nums.len(){
++            for j in 0..i{
++                if nums[i] + nums[j] == target{
++                    return vec![i as i32,j as i32]
++                }
++            }
++        };
++        return vec![0 as i32,0 as i32]
++        //  这一个输出不能像python一样省略，否则的话这段rust代码不能被编译。
++        // （编译器是不知道里面的输出是一定会被调用的，但该函数在定义时就表示了该函数一定有输出。
++        // （所以要求最后一定要一个输出用来告诉编译器这段代码一定会有输出，且类型与声明的一致。
++    }
++}
++```
++#### 复杂度分析：
++- 时间复杂度：`O(n^2)`，n是`nums`的长度。
++- 空间复杂度：`O(1)`，n是`nums`的长度。
++
++
++### 解法二 哈希表
++本题可以通过使用**哈希表**来存储列表中每个元素及其对应的下标，这么做可以有效地降低第二次遍历所花费的时间，可以直接使用对应的`keys`值调取对应的下标，但在调取之前要先判断需要的值是否在表里。但是由于增加了一个存储模块，导致了需要比解法一更大的内存。
++
++为什么可以使用**哈希表**？
++- 哈希表有一个特点就是它里面的`keys`值是唯一的，那么这也要求了我们输入的keys值也应该是唯一的，输入的keys值来自列表，也就表明了需要列表中的元素的唯一的，但题目并未提及这一点。此时就需要另辟蹊径，有可能**重复的元素一定不是答案**。这个是肯定的。
++
++为什么**重复的元素一定不是答案**？
++- 如果重复元素是答案，那么可以假设`a`和`b`是列表中重复元素，并且他们一定有不同的下标。再假设`x`是列表中的某一元素，且满足`a+x = target`，由此可知`b + x`也一定等于`target`因为`a = b`。那么现在就有两个答案（实际上是四个，但是现在不考虑包含相同元素的答案），分别是`[a的下标, x的下标]`和`[b的下标, x的下标]`。但是现在看到本题的提示，很明显的与之矛盾，所以这个假设是错误的，也就是说列表内重复的元素一定不是答案。
++- ![image.png](./pictures/1672910242-wOetnM-image.png)
++
++
++
++
++#### 代码
++
++```python3 []
++class Solution:
++    def twoSum(self, nums: list, target: int) -> list:
++        buffer = {}
++        for i in range(len(nums)):
++            difference = target - nums[i]
++            if difference in buffer:
++                return [i, buffer[difference]]
++            else:
++                buffer[nums[i]] = i
++```
++```rust []
++use std::collections::HashMap;
++impl Solution {
++    pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
++        let mut buffer:HashMap<i32,usize> = HashMap::new();
++        for i in 0..nums.len(){
++            let difference = target - nums[i];
++            if buffer.contains_key(&difference){
++                return vec![i as i32, buffer[&difference] as i32]
++            } else {
++                buffer.insert(nums[i], i);
++            }
++        };
++        return vec![0 as i32, 0 as i32];
++    }
++}
++```
++#### 复杂度分析：
++- 时间复杂度：`O(n)`，n是`nums`的长度，并且假设了计算`difference`和检索哈希表中`keys`都只需要常量时间。
++- 空间复杂度：`O(n)`，n是`nums`的长度。
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1673362494252)
++++ b/.idea/vcs.xml	(date 1673362494252)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/debug/deps/solution_1-f4416f60e7d739d8.d
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/deps/solution_1-f4416f60e7d739d8.d b/1_two_sum/rust/solution_1/target/debug/deps/solution_1-f4416f60e7d739d8.d
+new file mode 100644
+--- /dev/null	(date 1673346430462)
++++ b/1_two_sum/rust/solution_1/target/debug/deps/solution_1-f4416f60e7d739d8.d	(date 1673346430462)
+@@ -0,0 +1,6 @@
++D:\code\learning\leetcode\1_two_sum\rust\solution_1\target\debug\deps\solution_1-f4416f60e7d739d8.rmeta: src\lib.rs src\tests.rs
++
++D:\code\learning\leetcode\1_two_sum\rust\solution_1\target\debug\deps\solution_1-f4416f60e7d739d8.d: src\lib.rs src\tests.rs
++
++src\lib.rs:
++src\tests.rs:
+Index: 1_two_sum/rust/solution_1/target/debug/deps/solution_1.d
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/deps/solution_1.d b/1_two_sum/rust/solution_1/target/debug/deps/solution_1.d
+new file mode 100644
+--- /dev/null	(date 1673346458391)
++++ b/1_two_sum/rust/solution_1/target/debug/deps/solution_1.d	(date 1673346458391)
+@@ -0,0 +1,5 @@
++D:\code\learning\leetcode\1_two_sum\rust\solution_1\target\debug\deps\solution_1.exe: src\main.rs
++
++D:\code\learning\leetcode\1_two_sum\rust\solution_1\target\debug\deps\solution_1.d: src\main.rs
++
++src\main.rs:
+Index: 1_two_sum/rust/solution_1/target/debug/deps/solution_1-ddcf27f6c8caef62.d
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/deps/solution_1-ddcf27f6c8caef62.d b/1_two_sum/rust/solution_1/target/debug/deps/solution_1-ddcf27f6c8caef62.d
+new file mode 100644
+--- /dev/null	(date 1673346442168)
++++ b/1_two_sum/rust/solution_1/target/debug/deps/solution_1-ddcf27f6c8caef62.d	(date 1673346442168)
+@@ -0,0 +1,8 @@
++D:\code\learning\leetcode\1_two_sum\rust\solution_1\target\debug\deps\solution_1-ddcf27f6c8caef62.rmeta: src\lib.rs src\tests.rs
++
++D:\code\learning\leetcode\1_two_sum\rust\solution_1\target\debug\deps\libsolution_1-ddcf27f6c8caef62.rlib: src\lib.rs src\tests.rs
++
++D:\code\learning\leetcode\1_two_sum\rust\solution_1\target\debug\deps\solution_1-ddcf27f6c8caef62.d: src\lib.rs src\tests.rs
++
++src\lib.rs:
++src\tests.rs:
+Index: 1_two_sum/rust/solution_1/target/debug/deps/solution_1-ee15766f68c52970.d
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/deps/solution_1-ee15766f68c52970.d b/1_two_sum/rust/solution_1/target/debug/deps/solution_1-ee15766f68c52970.d
+new file mode 100644
+--- /dev/null	(date 1673346436740)
++++ b/1_two_sum/rust/solution_1/target/debug/deps/solution_1-ee15766f68c52970.d	(date 1673346436740)
+@@ -0,0 +1,6 @@
++D:\code\learning\leetcode\1_two_sum\rust\solution_1\target\debug\deps\solution_1-ee15766f68c52970.exe: src\lib.rs src\tests.rs
++
++D:\code\learning\leetcode\1_two_sum\rust\solution_1\target\debug\deps\solution_1-ee15766f68c52970.d: src\lib.rs src\tests.rs
++
++src\lib.rs:
++src\tests.rs:
+Index: 1_two_sum/rust/solution_1/target/debug/deps/solution_1-6de23b673073330c.d
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/deps/solution_1-6de23b673073330c.d b/1_two_sum/rust/solution_1/target/debug/deps/solution_1-6de23b673073330c.d
+new file mode 100644
+--- /dev/null	(date 1673346451093)
++++ b/1_two_sum/rust/solution_1/target/debug/deps/solution_1-6de23b673073330c.d	(date 1673346451093)
+@@ -0,0 +1,5 @@
++D:\code\learning\leetcode\1_two_sum\rust\solution_1\target\debug\deps\solution_1-6de23b673073330c.rmeta: src\main.rs
++
++D:\code\learning\leetcode\1_two_sum\rust\solution_1\target\debug\deps\solution_1-6de23b673073330c.d: src\main.rs
++
++src\main.rs:
+Index: 1_two_sum/rust/solution_1/target/debug/deps/solution_1-8f2e5fe74e5b414a.d
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/deps/solution_1-8f2e5fe74e5b414a.d b/1_two_sum/rust/solution_1/target/debug/deps/solution_1-8f2e5fe74e5b414a.d
+new file mode 100644
+--- /dev/null	(date 1673346363323)
++++ b/1_two_sum/rust/solution_1/target/debug/deps/solution_1-8f2e5fe74e5b414a.d	(date 1673346363323)
+@@ -0,0 +1,5 @@
++D:\code\learning\leetcode\1_two_sum\rust\solution_1\target\debug\deps\solution_1-8f2e5fe74e5b414a.rmeta: src\main.rs
++
++D:\code\learning\leetcode\1_two_sum\rust\solution_1\target\debug\deps\solution_1-8f2e5fe74e5b414a.d: src\main.rs
++
++src\main.rs:
+Index: 1_two_sum/rust/solution_1/target/debug/deps/solution_1-4877a124977150fd.d
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/deps/solution_1-4877a124977150fd.d b/1_two_sum/rust/solution_1/target/debug/deps/solution_1-4877a124977150fd.d
+new file mode 100644
+--- /dev/null	(date 1673346451127)
++++ b/1_two_sum/rust/solution_1/target/debug/deps/solution_1-4877a124977150fd.d	(date 1673346451127)
+@@ -0,0 +1,5 @@
++D:\code\learning\leetcode\1_two_sum\rust\solution_1\target\debug\deps\solution_1-4877a124977150fd.rmeta: src\main.rs
++
++D:\code\learning\leetcode\1_two_sum\rust\solution_1\target\debug\deps\solution_1-4877a124977150fd.d: src\main.rs
++
++src\main.rs:
+Index: 1_two_sum/rust/solution_1/target/debug/deps/solution_1-5634fecf5f0239e5.d
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/deps/solution_1-5634fecf5f0239e5.d b/1_two_sum/rust/solution_1/target/debug/deps/solution_1-5634fecf5f0239e5.d
+new file mode 100644
+--- /dev/null	(date 1673346430497)
++++ b/1_two_sum/rust/solution_1/target/debug/deps/solution_1-5634fecf5f0239e5.d	(date 1673346430497)
+@@ -0,0 +1,6 @@
++D:\code\learning\leetcode\1_two_sum\rust\solution_1\target\debug\deps\solution_1-5634fecf5f0239e5.rmeta: src\lib.rs src\tests.rs
++
++D:\code\learning\leetcode\1_two_sum\rust\solution_1\target\debug\deps\solution_1-5634fecf5f0239e5.d: src\lib.rs src\tests.rs
++
++src\lib.rs:
++src\tests.rs:
+Index: 1_two_sum/rust/solution_1/target/debug/deps/solution_1-0ed42cdfbadc0794.d
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/deps/solution_1-0ed42cdfbadc0794.d b/1_two_sum/rust/solution_1/target/debug/deps/solution_1-0ed42cdfbadc0794.d
+new file mode 100644
+--- /dev/null	(date 1673346363357)
++++ b/1_two_sum/rust/solution_1/target/debug/deps/solution_1-0ed42cdfbadc0794.d	(date 1673346363357)
+@@ -0,0 +1,5 @@
++D:\code\learning\leetcode\1_two_sum\rust\solution_1\target\debug\deps\solution_1-0ed42cdfbadc0794.rmeta: src\main.rs
++
++D:\code\learning\leetcode\1_two_sum\rust\solution_1\target\debug\deps\solution_1-0ed42cdfbadc0794.d: src\main.rs
++
++src\main.rs:
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-f4416f60e7d739d8/output-lib-solution_1
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-f4416f60e7d739d8/output-lib-solution_1 b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-f4416f60e7d739d8/output-lib-solution_1
+new file mode 100644
+--- /dev/null	(date 1673346430487)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-f4416f60e7d739d8/output-lib-solution_1	(date 1673346430487)
+@@ -0,0 +1,2 @@
++{"message":"function `sorted` is never used","code":{"code":"dead_code","explanation":null},"level":"warning","spans":[{"file_name":"src\\tests.rs","byte_start":27,"byte_end":33,"line_start":2,"line_end":2,"column_start":12,"column_end":18,"is_primary":true,"text":[{"text":"    pub fn sorted(a:Vec<i32>) -> Vec<i32>{","highlight_start":12,"highlight_end":18}],"label":null,"suggested_replacement":null,"suggestion_applicability":null,"expansion":null}],"children":[{"message":"`#[warn(dead_code)]` on by default","code":null,"level":"note","spans":[],"children":[],"rendered":null}],"rendered":"\u001b[0m\u001b[1m\u001b[38;5;11mwarning\u001b[0m\u001b[0m\u001b[1m\u001b[38;5;15m: function `sorted` is never used\u001b[0m\n\u001b[0m \u001b[0m\u001b[0m\u001b[1m\u001b[38;5;14m--> \u001b[0m\u001b[0msrc\\tests.rs:2:12\u001b[0m\n\u001b[0m  \u001b[0m\u001b[0m\u001b[1m\u001b[38;5;14m|\u001b[0m\n\u001b[0m\u001b[1m\u001b[38;5;14m2\u001b[0m\u001b[0m \u001b[0m\u001b[0m\u001b[1m\u001b[38;5;14m|\u001b[0m\u001b[0m \u001b[0m\u001b[0m    pub fn sorted(a:Vec<i32>) -> Vec<i32>{\u001b[0m\n\u001b[0m  \u001b[0m\u001b[0m\u001b[1m\u001b[38;5;14m| \u001b[0m\u001b[0m           \u001b[0m\u001b[0m\u001b[1m\u001b[38;5;11m^^^^^^\u001b[0m\n\u001b[0m  \u001b[0m\u001b[0m\u001b[1m\u001b[38;5;14m|\u001b[0m\n\u001b[0m  \u001b[0m\u001b[0m\u001b[1m\u001b[38;5;14m= \u001b[0m\u001b[0m\u001b[1m\u001b[38;5;15mnote\u001b[0m\u001b[0m: `#[warn(dead_code)]` on by default\u001b[0m\n\n"}
++{"message":"1 warning emitted","code":null,"level":"warning","spans":[],"children":[],"rendered":"\u001b[0m\u001b[1m\u001b[38;5;11mwarning\u001b[0m\u001b[0m\u001b[1m\u001b[38;5;15m: 1 warning emitted\u001b[0m\n\n"}
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-f4416f60e7d739d8/lib-solution_1.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-f4416f60e7d739d8/lib-solution_1.json b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-f4416f60e7d739d8/lib-solution_1.json
+new file mode 100644
+--- /dev/null	(date 1673346430493)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-f4416f60e7d739d8/lib-solution_1.json	(date 1673346430493)
+@@ -0,0 +1,1 @@
++{"rustc":17274253158082290215,"features":"[]","target":8685265593379726073,"profile":7309141686862299243,"path":17523903030608720598,"deps":[],"local":[{"CheckDepInfo":{"dep_info":"debug\\.fingerprint\\solution_1-f4416f60e7d739d8\\dep-lib-solution_1"}}],"rustflags":[],"metadata":7797948686568424061,"config":2202906307356721367,"compile_kind":0}
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-f4416f60e7d739d8/lib-solution_1
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-f4416f60e7d739d8/lib-solution_1 b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-f4416f60e7d739d8/lib-solution_1
+new file mode 100644
+--- /dev/null	(date 1673346430493)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-f4416f60e7d739d8/lib-solution_1	(date 1673346430493)
+@@ -0,0 +1,1 @@
++935b5fcb157e2936
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-f4416f60e7d739d8/invoked.timestamp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-f4416f60e7d739d8/invoked.timestamp b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-f4416f60e7d739d8/invoked.timestamp
+new file mode 100644
+--- /dev/null	(date 1673346430377)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-f4416f60e7d739d8/invoked.timestamp	(date 1673346430377)
+@@ -0,0 +1,1 @@
++This file has an mtime of when this was started.
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ee15766f68c52970/test-lib-solution_1.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ee15766f68c52970/test-lib-solution_1.json b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ee15766f68c52970/test-lib-solution_1.json
+new file mode 100644
+--- /dev/null	(date 1673346437022)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ee15766f68c52970/test-lib-solution_1.json	(date 1673346437022)
+@@ -0,0 +1,1 @@
++{"rustc":17274253158082290215,"features":"[]","target":8685265593379726073,"profile":17729903187224061422,"path":17523903030608720598,"deps":[],"local":[{"CheckDepInfo":{"dep_info":"debug\\.fingerprint\\solution_1-ee15766f68c52970\\dep-test-lib-solution_1"}}],"rustflags":[],"metadata":7797948686568424061,"config":2202906307356721367,"compile_kind":0}
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ee15766f68c52970/test-lib-solution_1
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ee15766f68c52970/test-lib-solution_1 b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ee15766f68c52970/test-lib-solution_1
+new file mode 100644
+--- /dev/null	(date 1673346437022)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ee15766f68c52970/test-lib-solution_1	(date 1673346437022)
+@@ -0,0 +1,1 @@
++550e9c37ceac56eb
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ee15766f68c52970/invoked.timestamp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ee15766f68c52970/invoked.timestamp b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ee15766f68c52970/invoked.timestamp
+new file mode 100644
+--- /dev/null	(date 1673346436658)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ee15766f68c52970/invoked.timestamp	(date 1673346436658)
+@@ -0,0 +1,1 @@
++This file has an mtime of when this was started.
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/debug/solution_1.d
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/solution_1.d b/1_two_sum/rust/solution_1/target/debug/solution_1.d
+new file mode 100644
+--- /dev/null	(date 1673362180833)
++++ b/1_two_sum/rust/solution_1/target/debug/solution_1.d	(date 1673362180833)
+@@ -0,0 +1,1 @@
++D:\code\leetcode\1_two_sum\rust\solution_1\target\debug\solution_1.exe: D:\code\leetcode\1_two_sum\rust\solution_1\src\lib.rs D:\code\leetcode\1_two_sum\rust\solution_1\src\main.rs D:\code\leetcode\1_two_sum\rust\solution_1\src\tests.rs
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ddcf27f6c8caef62/output-lib-solution_1
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ddcf27f6c8caef62/output-lib-solution_1 b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ddcf27f6c8caef62/output-lib-solution_1
+new file mode 100644
+--- /dev/null	(date 1673346442222)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ddcf27f6c8caef62/output-lib-solution_1	(date 1673346442222)
+@@ -0,0 +1,2 @@
++{"message":"function `sorted` is never used","code":{"code":"dead_code","explanation":null},"level":"warning","spans":[{"file_name":"src\\tests.rs","byte_start":27,"byte_end":33,"line_start":2,"line_end":2,"column_start":12,"column_end":18,"is_primary":true,"text":[{"text":"    pub fn sorted(a:Vec<i32>) -> Vec<i32>{","highlight_start":12,"highlight_end":18}],"label":null,"suggested_replacement":null,"suggestion_applicability":null,"expansion":null}],"children":[{"message":"`#[warn(dead_code)]` on by default","code":null,"level":"note","spans":[],"children":[],"rendered":null}],"rendered":"\u001b[0m\u001b[1m\u001b[38;5;11mwarning\u001b[0m\u001b[0m\u001b[1m\u001b[38;5;15m: function `sorted` is never used\u001b[0m\n\u001b[0m \u001b[0m\u001b[0m\u001b[1m\u001b[38;5;14m--> \u001b[0m\u001b[0msrc\\tests.rs:2:12\u001b[0m\n\u001b[0m  \u001b[0m\u001b[0m\u001b[1m\u001b[38;5;14m|\u001b[0m\n\u001b[0m\u001b[1m\u001b[38;5;14m2\u001b[0m\u001b[0m \u001b[0m\u001b[0m\u001b[1m\u001b[38;5;14m|\u001b[0m\u001b[0m \u001b[0m\u001b[0m    pub fn sorted(a:Vec<i32>) -> Vec<i32>{\u001b[0m\n\u001b[0m  \u001b[0m\u001b[0m\u001b[1m\u001b[38;5;14m| \u001b[0m\u001b[0m           \u001b[0m\u001b[0m\u001b[1m\u001b[38;5;11m^^^^^^\u001b[0m\n\u001b[0m  \u001b[0m\u001b[0m\u001b[1m\u001b[38;5;14m|\u001b[0m\n\u001b[0m  \u001b[0m\u001b[0m\u001b[1m\u001b[38;5;14m= \u001b[0m\u001b[0m\u001b[1m\u001b[38;5;15mnote\u001b[0m\u001b[0m: `#[warn(dead_code)]` on by default\u001b[0m\n\n"}
++{"message":"1 warning emitted","code":null,"level":"warning","spans":[],"children":[],"rendered":"\u001b[0m\u001b[1m\u001b[38;5;11mwarning\u001b[0m\u001b[0m\u001b[1m\u001b[38;5;15m: 1 warning emitted\u001b[0m\n\n"}
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ddcf27f6c8caef62/lib-solution_1.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ddcf27f6c8caef62/lib-solution_1.json b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ddcf27f6c8caef62/lib-solution_1.json
+new file mode 100644
+--- /dev/null	(date 1673346442230)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ddcf27f6c8caef62/lib-solution_1.json	(date 1673346442230)
+@@ -0,0 +1,1 @@
++{"rustc":17274253158082290215,"features":"[]","target":8685265593379726073,"profile":9251013656241001069,"path":17523903030608720598,"deps":[],"local":[{"CheckDepInfo":{"dep_info":"debug\\.fingerprint\\solution_1-ddcf27f6c8caef62\\dep-lib-solution_1"}}],"rustflags":[],"metadata":7797948686568424061,"config":2202906307356721367,"compile_kind":0}
+\ No newline at end of file
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1673362135021)
++++ b/.idea/.gitignore	(date 1673362135021)
+@@ -0,0 +1,8 @@
++# 默认忽略的文件
++/shelf/
++/workspace.xml
++# 基于编辑器的 HTTP 客户端请求
++/httpRequests/
++# Datasource local storage ignored files
++/dataSources/
++/dataSources.local.xml
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ddcf27f6c8caef62/lib-solution_1
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ddcf27f6c8caef62/lib-solution_1 b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ddcf27f6c8caef62/lib-solution_1
+new file mode 100644
+--- /dev/null	(date 1673346442230)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ddcf27f6c8caef62/lib-solution_1	(date 1673346442230)
+@@ -0,0 +1,1 @@
++7cc5adf58aff79d0
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+new file mode 100644
+--- /dev/null	(date 1673362130652)
++++ b/.idea/modules.xml	(date 1673362130652)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/leetcode.iml" filepath="$PROJECT_DIR$/.idea/leetcode.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ddcf27f6c8caef62/invoked.timestamp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ddcf27f6c8caef62/invoked.timestamp b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ddcf27f6c8caef62/invoked.timestamp
+new file mode 100644
+--- /dev/null	(date 1673346442087)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-ddcf27f6c8caef62/invoked.timestamp	(date 1673346442087)
+@@ -0,0 +1,1 @@
++This file has an mtime of when this was started.
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-c51e1c4d56cac22b/invoked.timestamp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-c51e1c4d56cac22b/invoked.timestamp b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-c51e1c4d56cac22b/invoked.timestamp
+new file mode 100644
+--- /dev/null	(date 1673346458303)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-c51e1c4d56cac22b/invoked.timestamp	(date 1673346458303)
+@@ -0,0 +1,1 @@
++This file has an mtime of when this was started.
+\ No newline at end of file
+Index: .idea/leetcode.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/leetcode.iml b/.idea/leetcode.iml
+new file mode 100644
+--- /dev/null	(date 1673362292151)
++++ b/.idea/leetcode.iml	(date 1673362292151)
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="CPP_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$">
++      <sourceFolder url="file://$MODULE_DIR$/1_two_sum/rust/solution_1/src" isTestSource="false" />
++      <sourceFolder url="file://$MODULE_DIR$/1_two_sum/rust/solution_2/src" isTestSource="false" />
++      <excludeFolder url="file://$MODULE_DIR$/1_two_sum/rust/solution_1/target" />
++      <excludeFolder url="file://$MODULE_DIR$/1_two_sum/rust/solution_2/target" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-c51e1c4d56cac22b/bin-solution_1.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-c51e1c4d56cac22b/bin-solution_1.json b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-c51e1c4d56cac22b/bin-solution_1.json
+new file mode 100644
+--- /dev/null	(date 1673346458611)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-c51e1c4d56cac22b/bin-solution_1.json	(date 1673346458611)
+@@ -0,0 +1,1 @@
++{"rustc":17274253158082290215,"features":"[]","target":3855426319648328466,"profile":9251013656241001069,"path":1684066648322511884,"deps":[[1751220855477751170,"solution_1",false,15022319004363375996]],"local":[{"CheckDepInfo":{"dep_info":"debug\\.fingerprint\\solution_1-c51e1c4d56cac22b\\dep-bin-solution_1"}}],"rustflags":[],"metadata":7797948686568424061,"config":2202906307356721367,"compile_kind":0}
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-c51e1c4d56cac22b/bin-solution_1
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-c51e1c4d56cac22b/bin-solution_1 b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-c51e1c4d56cac22b/bin-solution_1
+new file mode 100644
+--- /dev/null	(date 1673346458611)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-c51e1c4d56cac22b/bin-solution_1	(date 1673346458611)
+@@ -0,0 +1,1 @@
++7278ffb59bd425a8
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-8f2e5fe74e5b414a/test-bin-solution_1.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-8f2e5fe74e5b414a/test-bin-solution_1.json b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-8f2e5fe74e5b414a/test-bin-solution_1.json
+new file mode 100644
+--- /dev/null	(date 1673346363343)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-8f2e5fe74e5b414a/test-bin-solution_1.json	(date 1673346363343)
+@@ -0,0 +1,1 @@
++{"rustc":17274253158082290215,"features":"[]","target":3855426319648328466,"profile":1021633075455700787,"path":1684066648322511884,"deps":[],"local":[{"CheckDepInfo":{"dep_info":"debug\\.fingerprint\\solution_1-8f2e5fe74e5b414a\\dep-test-bin-solution_1"}}],"rustflags":[],"metadata":7797948686568424061,"config":2202906307356721367,"compile_kind":0}
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-8f2e5fe74e5b414a/test-bin-solution_1
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-8f2e5fe74e5b414a/test-bin-solution_1 b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-8f2e5fe74e5b414a/test-bin-solution_1
+new file mode 100644
+--- /dev/null	(date 1673346363343)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-8f2e5fe74e5b414a/test-bin-solution_1	(date 1673346363343)
+@@ -0,0 +1,1 @@
++e4745e9f305239c3
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-8f2e5fe74e5b414a/invoked.timestamp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-8f2e5fe74e5b414a/invoked.timestamp b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-8f2e5fe74e5b414a/invoked.timestamp
+new file mode 100644
+--- /dev/null	(date 1673346363243)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-8f2e5fe74e5b414a/invoked.timestamp	(date 1673346363243)
+@@ -0,0 +1,1 @@
++This file has an mtime of when this was started.
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-6de23b673073330c/test-bin-solution_1.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-6de23b673073330c/test-bin-solution_1.json b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-6de23b673073330c/test-bin-solution_1.json
+new file mode 100644
+--- /dev/null	(date 1673346451125)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-6de23b673073330c/test-bin-solution_1.json	(date 1673346451125)
+@@ -0,0 +1,1 @@
++{"rustc":17274253158082290215,"features":"[]","target":3855426319648328466,"profile":1021633075455700787,"path":1684066648322511884,"deps":[[1751220855477751170,"solution_1",false,3902789184164682643]],"local":[{"CheckDepInfo":{"dep_info":"debug\\.fingerprint\\solution_1-6de23b673073330c\\dep-test-bin-solution_1"}}],"rustflags":[],"metadata":7797948686568424061,"config":2202906307356721367,"compile_kind":0}
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/.rustc_info.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/.rustc_info.json b/1_two_sum/rust/solution_1/target/.rustc_info.json
+new file mode 100644
+--- /dev/null	(date 1673362389692)
++++ b/1_two_sum/rust/solution_1/target/.rustc_info.json	(date 1673362389692)
+@@ -0,0 +1,1 @@
++{"rustc_fingerprint":5538636282463768084,"outputs":{"15697416045686424142":{"success":true,"status":"","code":0,"stdout":"___.exe\nlib___.rlib\n___.dll\n___.dll\n___.lib\n___.dll\n","stderr":""},"10376369925670944939":{"success":true,"status":"","code":0,"stdout":"___.exe\nlib___.rlib\n___.dll\n___.dll\n___.lib\n___.dll\nC:\\Users\\Vincent\\.rustup\\toolchains\\stable-x86_64-pc-windows-msvc\ndebug_assertions\npanic=\"unwind\"\nproc_macro\ntarget_abi=\"\"\ntarget_arch=\"x86_64\"\ntarget_endian=\"little\"\ntarget_env=\"msvc\"\ntarget_family=\"windows\"\ntarget_feature=\"fxsr\"\ntarget_feature=\"llvm14-builtins-abi\"\ntarget_feature=\"sse\"\ntarget_feature=\"sse2\"\ntarget_has_atomic=\"16\"\ntarget_has_atomic=\"32\"\ntarget_has_atomic=\"64\"\ntarget_has_atomic=\"8\"\ntarget_has_atomic=\"ptr\"\ntarget_has_atomic_equal_alignment=\"16\"\ntarget_has_atomic_equal_alignment=\"32\"\ntarget_has_atomic_equal_alignment=\"64\"\ntarget_has_atomic_equal_alignment=\"8\"\ntarget_has_atomic_equal_alignment=\"ptr\"\ntarget_has_atomic_load_store=\"16\"\ntarget_has_atomic_load_store=\"32\"\ntarget_has_atomic_load_store=\"64\"\ntarget_has_atomic_load_store=\"8\"\ntarget_has_atomic_load_store=\"ptr\"\ntarget_os=\"windows\"\ntarget_pointer_width=\"64\"\ntarget_thread_local\ntarget_vendor=\"pc\"\nwindows\n","stderr":""},"4614504638168534921":{"success":true,"status":"","code":0,"stdout":"rustc 1.66.0 (69f9c33d7 2022-12-12)\nbinary: rustc\ncommit-hash: 69f9c33d71c871fc16ac445211281c6e7a340943\ncommit-date: 2022-12-12\nhost: x86_64-pc-windows-msvc\nrelease: 1.66.0\nLLVM version: 15.0.2\n","stderr":""}},"successes":{}}
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-6de23b673073330c/test-bin-solution_1
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-6de23b673073330c/test-bin-solution_1 b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-6de23b673073330c/test-bin-solution_1
+new file mode 100644
+--- /dev/null	(date 1673346451125)
++++ b/1_two_sum/rust/solution_1/target/debug/.fingerprint/solution_1-6de23b673073330c/test-bin-solution_1	(date 1673346451125)
+@@ -0,0 +1,1 @@
++7b4d0f76fd24138b
+\ No newline at end of file
+Index: 1_two_sum/rust/solution_1/target/CACHEDIR.TAG
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1_two_sum/rust/solution_1/target/CACHEDIR.TAG b/1_two_sum/rust/solution_1/target/CACHEDIR.TAG
+new file mode 100644
+--- /dev/null	(date 1673346363237)
++++ b/1_two_sum/rust/solution_1/target/CACHEDIR.TAG	(date 1673346363237)
+@@ -0,0 +1,3 @@
++Signature: 8a477f597d28d172789f06886806bc55
++# This file is a cache directory tag created by cargo.
++# For information about cache directory tags see https://bford.info/cachedir/
+diff --git a/1_two_sum/rust/solution_1/target/debug/incremental/solution_1-3eh1m15rgchi5/s-gh5gpg74to-mpbos5.lock b/1_two_sum/rust/solution_1/target/debug/incremental/solution_1-3eh1m15rgchi5/s-gh5gpg74to-mpbos5.lock
+new file mode 100644
+diff --git a/1_two_sum/rust/solution_1/target/debug/incremental/solution_1-291r9pkgzxr6i/s-gh5gr0sn20-1n6h2av.lock b/1_two_sum/rust/solution_1/target/debug/incremental/solution_1-291r9pkgzxr6i/s-gh5gr0sn20-1n6h2av.lock
+new file mode 100644
+diff --git a/1_two_sum/rust/solution_1/target/debug/incremental/solution_1-26s4kd7e4u5vd/s-gh5gqwgcj8-1jpr9wz.lock b/1_two_sum/rust/solution_1/target/debug/incremental/solution_1-26s4kd7e4u5vd/s-gh5gqwgcj8-1jpr9wz.lock
+new file mode 100644
+diff --git a/1_two_sum/rust/solution_1/target/debug/incremental/solution_1-21xi007o13r0a/s-gh5gqr50wx-1amy4w0.lock b/1_two_sum/rust/solution_1/target/debug/incremental/solution_1-21xi007o13r0a/s-gh5gqr50wx-1amy4w0.lock
+new file mode 100644
+diff --git a/1_two_sum/rust/solution_1/target/debug/incremental/solution_1-1ztxs4ri4fzi2/s-gh5gqwh0jp-i7dnns.lock b/1_two_sum/rust/solution_1/target/debug/incremental/solution_1-1ztxs4ri4fzi2/s-gh5gqwh0jp-i7dnns.lock
+new file mode 100644
+diff --git a/1_two_sum/rust/solution_1/target/debug/incremental/solution_1-1lj2n3cv8hjlr/s-gh5gqnwnat-f8gveg.lock b/1_two_sum/rust/solution_1/target/debug/incremental/solution_1-1lj2n3cv8hjlr/s-gh5gqnwnat-f8gveg.lock
+new file mode 100644
+diff --git a/1_two_sum/rust/solution_1/target/debug/incremental/solution_1-sc5fj9lciqp0/s-gh5gqk6t0d-1k8zb0c.lock b/1_two_sum/rust/solution_1/target/debug/incremental/solution_1-sc5fj9lciqp0/s-gh5gqk6t0d-1k8zb0c.lock
+new file mode 100644
+diff --git a/1_two_sum/rust/solution_1/target/debug/incremental/solution_1-lsqqn1jn43j0/s-gh5gpt3ylh-wo76rq.lock b/1_two_sum/rust/solution_1/target/debug/incremental/solution_1-lsqqn1jn43j0/s-gh5gpt3ylh-wo76rq.lock
+new file mode 100644
+diff --git a/1_two_sum/rust/solution_1/target/debug/incremental/solution_1-l1cziv5xpdk1/s-gh5gpg7uqk-18o3qgp.lock b/1_two_sum/rust/solution_1/target/debug/incremental/solution_1-l1cziv5xpdk1/s-gh5gpg7uqk-18o3qgp.lock
+new file mode 100644
+diff --git a/1_two_sum/rust/solution_1/target/debug/incremental/solution_1-h9voq05usz1v/s-gh5gqk66ib-7ysg6s.lock b/1_two_sum/rust/solution_1/target/debug/incremental/solution_1-h9voq05usz1v/s-gh5gqk66ib-7ysg6s.lock
+new file mode 100644
+diff --git a/1_two_sum/rust/solution_1/target/debug/deps/libsolution_1-6de23b673073330c.rmeta b/1_two_sum/rust/solution_1/target/debug/deps/libsolution_1-6de23b673073330c.rmeta
+new file mode 100644
+diff --git a/1_two_sum/rust/solution_1/target/debug/deps/libsolution_1-8f2e5fe74e5b414a.rmeta b/1_two_sum/rust/solution_1/target/debug/deps/libsolution_1-8f2e5fe74e5b414a.rmeta
+new file mode 100644
+diff --git a/1_two_sum/rust/solution_1/target/debug/deps/libsolution_1-4877a124977150fd.rmeta b/1_two_sum/rust/solution_1/target/debug/deps/libsolution_1-4877a124977150fd.rmeta
+new file mode 100644
+diff --git a/1_two_sum/rust/solution_1/target/debug/deps/libsolution_1-5634fecf5f0239e5.rmeta b/1_two_sum/rust/solution_1/target/debug/deps/libsolution_1-5634fecf5f0239e5.rmeta
+new file mode 100644
+diff --git a/1_two_sum/rust/solution_1/target/debug/deps/libsolution_1-0ed42cdfbadc0794.rmeta b/1_two_sum/rust/solution_1/target/debug/deps/libsolution_1-0ed42cdfbadc0794.rmeta
+new file mode 100644
+diff --git a/1_two_sum/rust/solution_1/target/debug/.cargo-lock b/1_two_sum/rust/solution_1/target/debug/.cargo-lock
+new file mode 100644
